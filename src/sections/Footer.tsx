@@ -1,141 +1,98 @@
 import React from "react";
-import { Shield, Facebook, MapPin, Phone, Navigation, Calendar } from "lucide-react";
-import { NAV_LINKS, GOLD_GRADIENT, CORE_VALUES } from "../constants/data";
-import { Button } from "../components/shared/Button";
+import { Shield, Facebook, MapPin, Phone, Navigation, Instagram, Mail } from "lucide-react";
+import { NAV_LINKS, CORE_VALUES } from "../constants/data";
 import { scrollToSection } from "../utils/helpers";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#080808] border-t border-[rgba(212,175,55,0.25)]">
-      {/* Map Preview Card */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16">
-        <div className="rounded-lg overflow-hidden relative h-48 sm:h-64 bg-[#121212] border border-[rgba(212,175,55,0.25)] shadow-2xl">
+    <footer className="bg-[#080808] border-t border-white/5 pt-16 pb-8">
+      {/* 1. Map Visual Frame */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+        <div className="media-box h-48 sm:h-64 border border-white/5 shadow-2xl">
           <img
             src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=1200&h=400&fit=crop&auto=format"
-            alt="Map location of The Helmet Garage"
-            className="w-full h-full object-cover opacity-30"
+            alt="Map Preview"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-lg" style={{ background: GOLD_GRADIENT }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center mb-4">
               <MapPin className="w-6 h-6 text-[#0b0b0b]" />
             </div>
-            <span className="text-white text-lg font-bold tracking-wide" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-              14 Catalina Subdivision, Pasig City
-            </span>
-            <span className="text-[var(--gold)] text-sm mt-1 font-medium tracking-widest uppercase" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-              Waze: "The Helmet Garage Pasig"
-            </span>
+            <span className="text-white font-bold text-lg" style={{ fontFamily: 'Rajdhani', sans-serif }}>14 Catalina Subdivision, Pasig City</span>
+            <span className="text-[var(--gold)] text-[10px] font-bold tracking-[0.2em] mt-1">THE HELMET GARAGE HQ</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded flex items-center justify-center" style={{ background: GOLD_GRADIENT }}>
-                <Shield className="w-5 h-5 text-[#0b0b0b]" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* 2. Footer Structure (4-Column Layout) */}
+        <div className="footer-grid mb-16">
+          {/* Column 1: Brand Bio */}
+          <div className="footer-col">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded bg-[var(--gold)] flex items-center justify-center">
+                <Shield className="w-4 h-4 text-[#0b0b0b]" />
               </div>
-              <div>
-                <div className="font-bold text-white text-base uppercase tracking-widest leading-none" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-                  The Helmet Garage
-                </div>
-                <div className="text-[10px] tracking-widest leading-none uppercase mt-0.5" style={{ color: "var(--gold)" }}>
-                  Premium Detailing · Pasig City
-                </div>
-              </div>
+              <span className="text-white font-bold tracking-widest text-sm" style={{ fontFamily: 'Rajdhani', sans-serif }}>THE HELMET GARAGE</span>
             </div>
-            <p className="text-foreground/45 text-xs leading-relaxed mb-5">
-              Premium motorcycle and helmet detailing in Rosario, Pasig City. Clean. Protect. Ride.
+            <p className="text-muted text-xs leading-relaxed mb-6">
+              Pasig City's premier motorcycle detailing specialist. We provide museum-grade care for your machine and gear, using only the finest ceramic and graphene products.
             </p>
-            {/* Social */}
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium text-[var(--gold)] transition-colors hover:bg-[rgba(212,175,55,0.1)] border border-[rgba(212,175,55,0.35)]"
-              style={{ fontFamily: "'Rajdhani', sans-serif", letterSpacing: "0.06em" }}
-            >
-              <Facebook className="w-4 h-4" />
-              The Helmet Garage
-            </a>
+            <button className="btn-outline btn-sm py-2 text-[10px]">
+              <Facebook className="w-3 h-3" /> FOLLOW ON FACEBOOK
+            </button>
           </div>
 
-          {/* Quick links */}
-          <div>
-            <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              {NAV_LINKS.map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollToSection(link.id)}
-                    className="text-foreground/50 text-sm hover:text-[var(--gold)] transition-colors"
-                  >
-                    {link.label}
-                  </button>
-                </li>
+          {/* Column 2: Quick Links */}
+          <div className="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              {NAV_LINKS.map(link => (
+                <li key={link.id}><a href={`#${link.id}`} onClick={(e) => { e.preventDefault(); scrollToSection(link.id); }}>{link.label}</a></li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-              Services
-            </h4>
-            <ul className="space-y-2">
-              {["Bike Wash", "Helmet Cleaning", "Ceramic Coating w/ Graphene", "Bike Spa Packages", "Snap Button Repair", "Decal Removal"].map((s) => (
-                <li key={s}>
-                  <button onClick={() => scrollToSection("services")} className="text-foreground/50 text-sm hover:text-[var(--gold)] transition-colors text-left">
-                    {s}
-                  </button>
-                </li>
-              ))}
+          {/* Column 3: Services */}
+          <div className="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Bike Wash</a></li>
+              <li><a href="#services">Helmet Cleaning</a></li>
+              <li><a href="#services">Ceramic Coating</a></li>
+              <li><a href="#services">Repair & Maintenance</a></li>
+              <li><a href="#services">Decal Installation</a></li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
-              Contact
-            </h4>
-            <div className="space-y-3 mb-6">
-              {[
-                { icon: <MapPin className="w-4 h-4" />, val: "14 Catalina Subdivision\nRosario, Pasig City 1609" },
-                { icon: <Phone className="w-4 h-4" />, val: "09394050469\n(also GCash)" },
-                { icon: <Navigation className="w-4 h-4" />, val: "Waze: The Helmet Garage Pasig" },
-              ].map(({ icon, val }) => (
-                <div key={val} className="flex gap-2.5 items-start">
-                  <div className="text-[var(--gold)] mt-0.5 flex-shrink-0">{icon}</div>
-                  <div className="text-foreground/50 text-xs whitespace-pre-line leading-relaxed">{val}</div>
-                </div>
-              ))}
+          {/* Column 4: Contact Directory */}
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-3">
+                <MapPin className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                <span className="text-xs text-muted leading-relaxed">Catalina Subdivision, Rosario,<br />Pasig City, Metro Manila</span>
+              </div>
+              <div className="flex gap-3">
+                <Phone className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                <span className="text-xs text-muted">0939 405 0469</span>
+              </div>
+              <div className="flex gap-3">
+                <Navigation className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                <span className="text-xs text-muted uppercase font-bold tracking-wider">WAZE: "The Helmet Garage Pasig"</span>
+              </div>
             </div>
-            <Button size="sm" onClick={() => scrollToSection("booking")}>
-              <Calendar className="w-3.5 h-3.5" />
-              BOOK NOW
-            </Button>
           </div>
         </div>
 
-        {/* Core values strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 py-6 border-t border-b border-[rgba(212,175,55,0.15)]">
-          {CORE_VALUES.map(({ icon, title }) => (
-            <div key={title} className="flex items-center gap-2.5">
-              <div className="text-[var(--gold)] flex-shrink-0">{icon}</div>
-              <span className="text-foreground/50 text-xs font-medium">{title}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-foreground/30 text-xs">
-            © 2026 The Helmet Garage · Rosario, Pasig City · All rights reserved.
-          </p>
-          <p className="text-foreground/30 text-xs italic">Clean. Protect. Ride.</p>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-[10px] text-muted uppercase tracking-widest">© 2026 THE HELMET GARAGE. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-6">
+            <Instagram className="w-4 h-4 text-muted hover:text-[var(--gold)] cursor-pointer transition-colors" />
+            <Facebook className="w-4 h-4 text-muted hover:text-[var(--gold)] cursor-pointer transition-colors" />
+            <Mail className="w-4 h-4 text-muted hover:text-[var(--gold)] cursor-pointer transition-colors" />
+          </div>
         </div>
       </div>
     </footer>
