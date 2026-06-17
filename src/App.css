@@ -596,9 +596,12 @@ h2 {
 }
 
 .about-image-side {
-    background-image: url('public./Address.png');
+    background-image: url('/Address.png');
     background-size: cover;
     background-position: center;
+    position: relative;
+    min-height: 500px;
+    border-radius: 6px;
 }
 
 .image-overlay-box {
