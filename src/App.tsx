@@ -1,44 +1,70 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { 
+  Shield, Calendar, Star, MapPin, Phone, 
+  Facebook, Navigation, Clock, Instagram, Mail, 
+  Wrench, Sparkles, Check, ArrowUp, Menu, X 
+} from "lucide-react";
 import './App.css';
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
-    // 1. FUTURISTIC SCROLL OBSERVER
-    const observerOptions = { threshold: 0.15 };
+    // 1. SCROLLED STATE & BACK TO TOP VISIBILITY
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+      setShowScrollTop(window.scrollY > 500);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // 2. PERMANENT SCROLL OBSERVER (RE-TRIGGERABLE)
+    const observerOptions = { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible"); 
         }
       });
     }, observerOptions);
 
-    // Track all reveal targets
     const targets = document.querySelectorAll(".scroll-reveal, .slide-left, .slide-right, .service-card, .value-card, .review-card, .price-list-box, .matrix-wrapper");
     targets.forEach(el => revealObserver.observe(el));
 
-    // 2. PARALLAX HERO EFFECT
+    // 3. PARALLAX HERO EFFECT
     const handleHeroParallax = () => {
-      const heroBg = document.querySelector(".hero-bg-parallax");
+      const heroBg = document.querySelector(".hero-bg-parallax") as HTMLElement;
       if (heroBg) {
         const scrolled = window.pageYOffset;
-        heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
       }
     };
     window.addEventListener("scroll", handleHeroParallax);
 
     return () => {
       revealObserver.disconnect();
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scroll", handleHeroParallax);
     };
   }, []);
 
-  const handleBookingSubmit = (e) => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Booking submitted successfully!');
   };
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Message sent successfully!');
   };
@@ -46,21 +72,34 @@ function App() {
   return (
     <div className="site-wrapper">
       
+      {/* BACK TO TOP BUTTON */}
+      <button 
+        className={`back-to-top-btn ${showScrollTop ? "show" : ""}`} 
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        <div className="btn-inner">
+          <ArrowUp size={24} />
+          <div className="pulse-ring"></div>
+        </div>
+      </button>
+
       {/* 1. MAIN NAVIGATION HEADER */}
-      <header className="main-header">
+      <header className={`main-header ${isScrolled ? "scrolled" : ""}`}>
         <div className="header-logo">
-          <img src="/logo.jpg" alt="The Helmet Garage Logo" className="brand-logo-img" />
+          <div className="brand-logo-frame">
+            <Shield size={24} color="#D4AF37" />
+          </div>
           <div className="logo-text">
             <span className="brand-title">THE HELMET GARAGE</span>
             <span className="brand-subtitle">PREMIUM DETAILING</span>
           </div>
         </div>
         <nav className="header-nav">
-          <a href="#home" className="nav-link active">HOME</a>
+          <a href="#home" className="nav-link">HOME</a>
           <a href="#services" className="nav-link">SERVICES</a>
           <a href="#pricing" className="nav-link">PRICING</a>
           <a href="#about" className="nav-link">ABOUT</a>
-          <a href="#booking" className="nav-link">BOOK NOW</a>
           <a href="#contact" className="nav-link">CONTACT</a>
         </nav>
         <div className="header-cta">
@@ -75,9 +114,9 @@ function App() {
           <h1 className="hero-headline scroll-reveal">
             <span className="gold-text">PROTECT.</span><br />RIDE.
           </h1>
-          <p className="hero-subtext scroll-reveal">Premium Detailing and Care for Your Ride. Pasig City's high-tech detailing specialist.</p>
+          <p className="hero-subtext scroll-reveal">Premium Detailing and Care for Your Ride. Pasig City's specialized studio for museum-grade finishing.</p>
           <div className="hero-actions scroll-reveal">
-            <a href="#booking" className="btn-primary glitch-btn">BOOK YOUR SLOT TODAY!</a>
+            <a href="#booking" className="btn-primary">BOOK YOUR SLOT TODAY!</a>
             <a href="#services" className="btn-outline">VIEW SERVICES</a>
           </div>
           <div className="hero-stats scroll-reveal">
@@ -96,35 +135,35 @@ function App() {
         </div>
         <div className="services-grid">
           <div className="service-card">
-            <div className="card-icon-frame"><span className="vector-icon-wash"></span></div>
+            <div className="card-icon-frame"><Wrench size={24} color="#D4AF37" /></div>
             <h3>Bike Wash</h3>
             <p>Standard motorwash to premium ceramic-protected full wash. Quick turnaround, spotless results.</p>
             <ul>
-              <li>Motorwash from ₱120</li>
-              <li>Wax & Ceramic options</li>
-              <li>Big Bike specialist</li>
+              <li><Check size={14} /> Motorwash from ₱120</li>
+              <li><Check size={14} /> Wax & Ceramic options</li>
+              <li><Check size={14} /> Big Bike specialist</li>
             </ul>
             <a href="#pricing" className="card-link">SEE FULL PRICING ➔</a>
           </div>
           <div className="service-card">
-            <div className="card-icon-frame"><span className="vector-icon-helmet"></span></div>
+            <div className="card-icon-frame"><Shield size={24} color="#D4AF37" /></div>
             <h3>Helmet Cleaning</h3>
             <p>Deep clean, graphene ceramic coating, and full detailing packages for all helmet types.</p>
             <ul>
-              <li>Full & Half Face cleaning</li>
-              <li>Graphene Ceramic ₱600</li>
-              <li>Packages A, B & C</li>
+              <li><Check size={14} /> Full & Half Face cleaning</li>
+              <li><Check size={14} /> Graphene Ceramic ₱600</li>
+              <li><Check size={14} /> Interior sanitization</li>
             </ul>
             <a href="#pricing" className="card-link">SEE FULL PRICING ➔</a>
           </div>
           <div className="service-card">
-            <div className="card-icon-frame"><span className="vector-icon-repair"></span></div>
+            <div className="card-icon-frame"><Sparkles size={24} color="#D4AF37" /></div>
             <h3>Repairs & Add-Ons</h3>
             <p>Snap button repair, D-ring replacement, and decal removal with premium wash.</p>
             <ul>
-              <li>Stainless Button ₱150</li>
-              <li>Double D Ring ₱100</li>
-              <li>Decal Removal ₱800</li>
+              <li><Check size={14} /> Stainless Button ₱150</li>
+              <li><Check size={14} /> Double D Ring ₱100</li>
+              <li><Check size={14} /> Decal Removal ₱800</li>
             </ul>
             <a href="#pricing" className="card-link">SEE FULL PRICING ➔</a>
           </div>
@@ -208,7 +247,7 @@ function App() {
           <div className="about-text-side slide-right">
             <span className="section-tag">WHO WE ARE</span>
             <h2>MORE THAN CLEAN — PASSIONATE CARE FOR YOUR RIDE.</h2>
-            <p>The Helmet Garage was born from a simple frustration: riders deserving better care for their gear and machines than generic car wash services provide.</p>
+            <p>The Helmet Garage was born from a simple frustration: riders deserving better care for their machines. We built a studio designed exclusively for motorcycles.</p>
             <p>From graphene ceramic coatings to precision motorwash — everything we do reflects a commitment to craft that you can see and feel every time you ride.</p>
             <div className="about-actions">
               <a href="#booking" className="btn-primary">BOOK YOUR SLOT</a>
@@ -224,7 +263,7 @@ function App() {
         <div className="core-values-grid">
           <div className="value-card">
             <h4>Quality Service</h4>
-            <p>Every job meets our exacting standard before it leaves the garage.</p>
+            <p>We never cut corners — every job meets our museum-grade standard.</p>
           </div>
           <div className="value-card">
             <h4>Passion for Riders</h4>
@@ -232,7 +271,7 @@ function App() {
           </div>
           <div className="value-card">
             <h4>High-Quality Products</h4>
-            <p>We use only professional-grade ceramic coatings and cleaning agents.</p>
+            <p>We use only professional-grade ceramic coatings and graphene agents.</p>
           </div>
           <div className="value-card">
             <h4>Attention to Detail</h4>
@@ -248,14 +287,14 @@ function App() {
           <div className="rating-summary-card">
             <span className="big-rating">4.9</span>
             <div className="rating-meta">
-              <span className="stars-row">★★★★★</span>
+              <div className="stars-row"><Star size={14} fill="#D4AF37" color="#D4AF37" /> <Star size={14} fill="#D4AF37" color="#D4AF37" /> <Star size={14} fill="#D4AF37" color="#D4AF37" /> <Star size={14} fill="#D4AF37" color="#D4AF37" /> <Star size={14} fill="#D4AF37" color="#D4AF37" /></div>
               <span className="rating-labels">OVERALL RATING • Facebook / Google</span>
             </div>
           </div>
         </div>
         <div className="reviews-grid">
           <div className="review-card">
-            <div className="card-stars">★★★★★</div>
+            <div className="card-stars"><Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /></div>
             <p className="review-text">"Had my helmet detailed and coated — it looked brand new. The graphene ceramic coating is genuinely impressive."</p>
             <div className="author-meta-block">
               <span className="review-author">Aldrin M.</span>
@@ -263,7 +302,7 @@ function App() {
             </div>
           </div>
           <div className="review-card">
-            <div className="card-stars">★★★★★</div>
+            <div className="card-stars"><Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /></div>
             <p className="review-text">"Brought my Shoei for detailing. The team was super professional and the result was stunning. Worth every peso."</p>
             <div className="author-meta-block">
               <span className="review-author">Trisha V.</span>
@@ -271,7 +310,7 @@ function App() {
             </div>
           </div>
           <div className="review-card">
-            <div className="card-stars">★★★★★</div>
+            <div className="card-stars"><Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /> <Star size={12} fill="#D4AF37" color="#D4AF37" /></div>
             <p className="review-text">"Snap button was broken for months. Fixed in under 20 minutes for only ₱150. Service is fast and honest."</p>
             <div className="author-meta-block">
               <span className="review-author">Carlo B.</span>
@@ -287,7 +326,6 @@ function App() {
           <div className="booking-info-side">
             <span className="section-tag">APPOINTMENTS</span>
             <h2>SCHEDULE YOUR <span className="gold-text">SLOT</span></h2>
-            <p className="booking-desc-text">Book ahead to guarantee your preferred time. We confirm every booking within the hour.</p>
             <div className="info-stack">
               <div className="info-stack-item">
                 <strong>HOURS</strong>
@@ -295,15 +333,11 @@ function App() {
               </div>
               <div className="info-stack-item">
                 <strong>ADDRESS</strong>
-                <span>14 Catalina Subdivision, Rosario, Pasig City 1609</span>
+                <span>14 Catalina Subdivision, Pasig City</span>
               </div>
               <div className="info-stack-item">
                 <strong>PHONE</strong>
                 <span>09394050469</span>
-              </div>
-              <div className="info-stack-item">
-                <strong>WAZE</strong>
-                <span>Search "The Helmet Garage Pasig"</span>
               </div>
             </div>
           </div>
@@ -312,7 +346,6 @@ function App() {
             <form onSubmit={handleBookingSubmit} className="main-form">
               <div className="form-group"><label>FULL NAME *</label><input type="text" placeholder="Juan dela Cruz" required /></div>
               <div className="form-group"><label>PHONE NUMBER *</label><input type="text" placeholder="09XXXXXXXXX" required /></div>
-              <div className="form-group"><label>MOTORCYCLE MODEL *</label><input type="text" placeholder="e.g. Yamaha NMAX 2023" required /></div>
               <div className="form-row">
                 <div className="form-group"><label>DATE *</label><input type="date" required /></div>
                 <div className="form-group"><label>TIME *</label><input type="time" required /></div>
@@ -329,11 +362,9 @@ function App() {
           <div className="contact-info-block slide-left">
             <span className="section-tag">FIND US</span>
             <h2>GET IN <span className="gold-text">TOUCH</span></h2>
-            <p>Message us on Facebook or give us a call. We're always happy to help fellow riders.</p>
             <div className="contact-details-stack">
               <div className="contact-meta-row"><strong>ADDRESS:</strong> 14 Catalina Subdivision, Rosario, Pasig City</div>
               <div className="contact-meta-row"><strong>PHONE / GCASH:</strong> 09394050469</div>
-              <div className="contact-meta-row"><strong>WAZE:</strong> Search "The Helmet Garage Pasig"</div>
             </div>
           </div>
           <div className="contact-form-block slide-right">
@@ -350,24 +381,19 @@ function App() {
       {/* 9. MASTER INTEGRATED FOOTER */}
       <footer className="main-footer">
         <div className="map-placeholder-box">
-          <div className="map-graphic-pin"></div>
-          <p className="map-text">14 Catalina Subdivision, Pasig City • Waze: "The Helmet Garage Pasig"</p>
+          <p className="map-text"><MapPin size={14} color="#D4AF37" /> 14 Catalina Subdivision, Pasig City</p>
         </div>
         <div className="footer-columns">
           <div className="footer-column brand-col">
             <div className="footer-logo-block">
-              <img src="/logo.jpg" alt="The Helmet Garage" className="footer-logo-img" />
-              <h3>THE HELMET GARAGE</h3>
+               <Shield size={24} color="#D4AF37" />
+               <h3>THE HELMET GARAGE</h3>
             </div>
-            <p className="footer-tagline">Premium motorcycle and helmet detailing in Rosario, Pasig City. Clean. Protect. Ride.</p>
+            <p className="footer-tagline">Premium motorcycle detailing in Rosario, Pasig City. Clean. Protect. Ride.</p>
           </div>
           <div className="footer-column">
             <h4>QUICK LINKS</h4>
-            <a href="#home">Home</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a>
-          </div>
-          <div className="footer-column">
-            <h4>SERVICES</h4>
-            <a href="#services">Bike Wash</a><a href="#services">Helmet Cleaning</a><a href="#services">Ceramic Coating</a>
+            <a href="#home">Home</a><a href="#services">Services</a><a href="#pricing">Pricing</a>
           </div>
           <div className="footer-column">
             <h4>CONTACT</h4>

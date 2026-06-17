@@ -71,7 +71,7 @@ h2 {
   transform: scale(0.96) translateY(30px);
 }
 
-/* Visible / Active State */
+/* Visible / Active State (RE-TRIGGERABLE) */
 .visible {
   opacity: 1 !important;
   transform: translate(0, 0) scale(1) !important;
@@ -95,6 +95,59 @@ h2 {
 .price-lists-container .price-list-box.visible:nth-child(2) { transition-delay: 0.2s; }
 .price-lists-container .price-list-box.visible:nth-child(3) { transition-delay: 0.3s; }
 
+/* BACK TO TOP BUTTON STYLES */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1001;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top-btn.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+
+.btn-inner {
+  width: 56px;
+  height: 56px;
+  background-color: #D4AF37;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover .btn-inner {
+  transform: translateY(-5px);
+  background-color: #F3CD46;
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid #D4AF37;
+  border-radius: 50%;
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
 /* PREMIUM ACTION CONTROLS */
 .btn-primary {
   background-color: #D4AF37;
@@ -110,34 +163,12 @@ h2 {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
 }
 
 .btn-primary:hover {
   background-color: #F3CD46;
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-}
-
-.btn-outline {
-  background: transparent;
-  color: #D4AF37;
-  border: 1px solid #D4AF37;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 800;
-  padding: 16px 32px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: inline-block;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-outline:hover {
-  background: rgba(212, 175, 55, 0.08);
-  transform: translateY(-2px);
 }
 
 /* 1. STRUCTURAL HEAD NAVIGATION GRID */
