@@ -344,12 +344,58 @@ function App() {
           <div className="booking-form-side">
             <h3>YOUR DETAILS</h3>
             <form onSubmit={handleBookingSubmit} className="main-form">
-              <div className="form-group"><label>FULL NAME *</label><input type="text" placeholder="Juan dela Cruz" required /></div>
-              <div className="form-group"><label>PHONE NUMBER *</label><input type="text" placeholder="09XXXXXXXXX" required /></div>
               <div className="form-row">
-                <div className="form-group"><label>DATE *</label><input type="date" required /></div>
-                <div className="form-group"><label>TIME *</label><input type="time" required /></div>
+                <div className="form-group"><label>FULL NAME *</label><input type="text" placeholder="Juan dela Cruz" required /></div>
+                <div className="form-group"><label>PHONE NUMBER *</label><input type="text" placeholder="09XXXXXXXXX" required /></div>
               </div>
+              
+              <div className="form-group">
+                <label>MOTORCYCLE MODEL *</label>
+                <input type="text" placeholder="e.g. Yamaha NMAX / Honda Click / Big Bike" required />
+              </div>
+
+              <div className="form-group">
+                <label>SERVICE NEEDED *</label>
+                <select required style={{ width: '100%' }}>
+                  <option value="" disabled selected>Select a service...</option>
+                  <optgroup label="BIKE WASH">
+                    <option value="motorwash">Motorwash (₱120)</option>
+                    <option value="motorwash-wax">w/ Wax (₱150)</option>
+                    <option value="premium-ceramic">Premium Ceramic (₱200)</option>
+                    <option value="bigbike-wax">Big Bike w/ Wax (₱200)</option>
+                    <option value="bigbike-ceramic">Big Bike w/ Ceramic (₱250)</option>
+                  </optgroup>
+                  <optgroup label="HELMET CLEANING">
+                    <option value="helmet-clean">Helmet Clean (₱250)</option>
+                    <option value="ceramic-graphene">Ceramic w/ Graphene (₱600)</option>
+                    <option value="detailing">Detailing (₱450)</option>
+                    <option value="pkg-a">Package A (₱600)</option>
+                    <option value="pkg-b">Package B (₱800)</option>
+                    <option value="pkg-c">Package C (₱1,000)</option>
+                  </optgroup>
+                  <optgroup label="HARDWARE REPAIRS">
+                    <option value="snap-button">Snap Button (₱100)</option>
+                    <option value="stainless-button">Stainless Button (₱150)</option>
+                    <option value="decal-removal">Decal Removal & Premium Wash (₱800)</option>
+                  </optgroup>
+                  <optgroup label="FULL VEHICLE BUNDLES">
+                    <option value="bundle-a">Package A</option>
+                    <option value="bundle-b">Package B</option>
+                    <option value="bundle-c">Package C</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group"><label>PREFERRED DATE *</label><input type="date" required /></div>
+                <div className="form-group"><label>PREFERRED TIME *</label><input type="time" required /></div>
+              </div>
+
+              <div className="form-group">
+                <label>ADDITIONAL NOTES (OPTIONAL)</label>
+                <textarea rows={3} placeholder="Any special requests or details about your bike/helmet..."></textarea>
+              </div>
+
               <button type="submit" className="form-submit-btn">CONFIRM MY BOOKING</button>
             </form>
           </div>
