@@ -6,8 +6,30 @@ import { scrollToSection } from "../utils/helpers";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#080808] pt-16 pb-8 border-t border-[rgba(201,162,39,0.25)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <footer className="bg-[#080808] border-t border-[rgba(212,175,55,0.25)]">
+      {/* Map Preview Card */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16">
+        <div className="rounded-lg overflow-hidden relative h-48 sm:h-64 bg-[#121212] border border-[rgba(212,175,55,0.25)] shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=1200&h=400&fit=crop&auto=format"
+            alt="Map location of The Helmet Garage"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-lg" style={{ background: GOLD_GRADIENT }}>
+              <MapPin className="w-6 h-6 text-[#0b0b0b]" />
+            </div>
+            <span className="text-white text-lg font-bold tracking-wide" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+              14 Catalina Subdivision, Pasig City
+            </span>
+            <span className="text-[var(--gold)] text-sm mt-1 font-medium tracking-widest uppercase" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+              Waze: "The Helmet Garage Pasig"
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -19,7 +41,7 @@ export const Footer: React.FC = () => {
                 <div className="font-bold text-white text-base uppercase tracking-widest leading-none" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
                   The Helmet Garage
                 </div>
-                <div className="text-[10px] tracking-widest leading-none uppercase mt-0.5" style={{ color: "#c9a227" }}>
+                <div className="text-[10px] tracking-widest leading-none uppercase mt-0.5" style={{ color: "var(--gold)" }}>
                   Premium Detailing · Pasig City
                 </div>
               </div>
@@ -32,7 +54,7 @@ export const Footer: React.FC = () => {
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium text-[#c9a227] transition-colors hover:bg-[#c9a227]/10 border border-[rgba(201,162,39,0.35)]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium text-[var(--gold)] transition-colors hover:bg-[rgba(212,175,55,0.1)] border border-[rgba(212,175,55,0.35)]"
               style={{ fontFamily: "'Rajdhani', sans-serif", letterSpacing: "0.06em" }}
             >
               <Facebook className="w-4 h-4" />
@@ -50,7 +72,7 @@ export const Footer: React.FC = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-foreground/50 text-sm hover:text-[#c9a227] transition-colors"
+                    className="text-foreground/50 text-sm hover:text-[var(--gold)] transition-colors"
                   >
                     {link.label}
                   </button>
@@ -67,7 +89,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               {["Bike Wash", "Helmet Cleaning", "Ceramic Coating w/ Graphene", "Bike Spa Packages", "Snap Button Repair", "Decal Removal"].map((s) => (
                 <li key={s}>
-                  <button onClick={() => scrollToSection("services")} className="text-foreground/50 text-sm hover:text-[#c9a227] transition-colors text-left">
+                  <button onClick={() => scrollToSection("services")} className="text-foreground/50 text-sm hover:text-[var(--gold)] transition-colors text-left">
                     {s}
                   </button>
                 </li>
@@ -87,7 +109,7 @@ export const Footer: React.FC = () => {
                 { icon: <Navigation className="w-4 h-4" />, val: "Waze: The Helmet Garage Pasig" },
               ].map(({ icon, val }) => (
                 <div key={val} className="flex gap-2.5 items-start">
-                  <div className="text-[#c9a227] mt-0.5 flex-shrink-0">{icon}</div>
+                  <div className="text-[var(--gold)] mt-0.5 flex-shrink-0">{icon}</div>
                   <div className="text-foreground/50 text-xs whitespace-pre-line leading-relaxed">{val}</div>
                 </div>
               ))}
@@ -100,10 +122,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Core values strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 py-6 border-t border-b border-[rgba(201,162,39,0.15)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 py-6 border-t border-b border-[rgba(212,175,55,0.15)]">
           {CORE_VALUES.map(({ icon, title }) => (
             <div key={title} className="flex items-center gap-2.5">
-              <div className="text-[#c9a227] flex-shrink-0">{icon}</div>
+              <div className="text-[var(--gold)] flex-shrink-0">{icon}</div>
               <span className="text-foreground/50 text-xs font-medium">{title}</span>
             </div>
           ))}

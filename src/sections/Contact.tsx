@@ -58,31 +58,15 @@ export const Contact: React.FC = () => {
                 { icon: <Clock className="w-5 h-5" />, label: "Operating Hours", val: "Mon – Sat  8:00 AM – 5:00 PM\nSunday by appointment" },
               ].map(({ icon, label, val }) => (
                 <div key={label} className="flex gap-4">
-                  <div className="w-10 h-10 rounded flex items-center justify-center text-[#c9a227] flex-shrink-0 bg-[rgba(201,162,39,0.1)] border border-[rgba(201,162,39,0.25)]">
+                  <div className="w-10 h-10 rounded flex items-center justify-center text-[var(--gold)] flex-shrink-0 bg-[rgba(212,175,55,0.1)] border border-[rgba(212,175,55,0.25)]">
                     {icon}
                   </div>
                   <div>
-                    <div className="text-xs text-[#c9a227] font-bold uppercase tracking-wider mb-0.5" style={{ fontFamily: "'Rajdhani', sans-serif" }}>{label}</div>
+                    <div className="text-xs text-[var(--gold)] font-bold uppercase tracking-wider mb-0.5" style={{ fontFamily: "'Rajdhani', sans-serif" }}>{label}</div>
                     <div className="text-foreground/75 text-sm whitespace-pre-line">{val}</div>
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Map placeholder */}
-            <div className="rounded-lg overflow-hidden relative h-44 bg-[#161616] border border-[rgba(201,162,39,0.25)]">
-              <img
-                src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&h=300&fit=crop&auto=format"
-                alt="Map location"
-                className="w-full h-full object-cover opacity-20"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2" style={{ background: GOLD_GRADIENT }}>
-                  <MapPin className="w-5 h-5 text-[#0b0b0b]" />
-                </div>
-                <span className="text-white text-sm font-semibold">14 Catalina Subdivision, Pasig City</span>
-                <span className="text-foreground/50 text-xs mt-1">Waze: "The Helmet Garage Pasig"</span>
-              </div>
             </div>
           </div>
 
