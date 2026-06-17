@@ -596,12 +596,9 @@ h2 {
 }
 
 .about-image-side {
-  height: 440px;
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
-              url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
-  border-radius: 6px;
-  position: relative;
-  border: 1px solid rgba(255,255,255,0.05);
+    background-image: url('public./Address.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .image-overlay-box {
@@ -1126,4 +1123,16 @@ h2 {
   .footer-columns {
     grid-template-columns: 1fr;
   }
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.company-logo-footer {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }

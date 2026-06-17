@@ -88,8 +88,12 @@ function App() {
       <header className={`main-header ${isScrolled ? "scrolled" : ""}`}>
         <div className="header-logo">
           <div className="brand-logo-frame">
-            <Shield size={24} color="#D4AF37" />
-          </div>
+  <img
+    src="/logo.jpg"
+    alt="The Helmet Garage Logo"
+    className="company-logo"
+  />
+</div>
           <div className="logo-text">
             <span className="brand-title">THE HELMET GARAGE</span>
             <span className="brand-subtitle">PREMIUM DETAILING</span>
@@ -431,10 +435,14 @@ function App() {
         </div>
         <div className="footer-columns">
           <div className="footer-column brand-col">
-            <div className="footer-logo-block">
-               <Shield size={24} color="#D4AF37" />
-               <h3>THE HELMET GARAGE</h3>
-            </div>
+           <div className="footer-logo-block">
+  <img
+    src="/logo.jpg"
+    alt="The Helmet Garage Logo"
+    className="company-logo-footer"
+  />
+  <h3>THE HELMET GARAGE</h3>
+</div>
             <p className="footer-tagline">Premium motorcycle detailing in Rosario, Pasig City. Clean. Protect. Ride.</p>
           </div>
           <div className="footer-column">
