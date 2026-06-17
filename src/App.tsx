@@ -41,7 +41,7 @@ function App() {
           <a href="#contact" className="nav-link">CONTACT</a>
         </nav>
         <div className="header-cta">
-          <a href="#booking" className="book-slot-btn">📅 BOOK YOUR SLOT</a>
+          <a href="#booking" className="book-slot-btn">BOOK YOUR SLOT</a>
         </div>
       </header>
 
