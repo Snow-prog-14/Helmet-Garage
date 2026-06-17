@@ -1,4 +1,4 @@
-/* GLOBAL LAYOUT RESET SYSTEM */
+/* GLOBAL CORE DESIGN CONFIGURATION */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,13 +14,14 @@ body {
   color: #FFFFFF;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .gold-text {
   color: #D4AF37;
 }
 
-/* UNIVERSAL SECTION TITLE MODULES */
+/* SECTION HEADER INTERACTION MODULES */
 .section-title-wrap {
   text-align: center;
   margin-bottom: 50px;
@@ -28,36 +29,64 @@ body {
 
 .section-tag {
   color: #D4AF37;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 h2 {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
 }
 
-/* BUTTON COMPONENTS */
+/* SCROLL ANIMATIONS SYSTEM */
+.fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Trigger class template for custom deployment hooks */
+.scroll-trigger {
+  opacity: 1;
+  transform: none;
+  transition: all 0.8s ease-out;
+}
+
+/* PREMIUM ACTION CONTROLS */
 .btn-primary {
   background-color: #D4AF37;
   color: #000000;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 700;
-  padding: 14px 28px;
+  font-weight: 800;
+  padding: 16px 32px;
   border-radius: 4px;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: inline-block;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
-  background-color: #bfaa30;
+  background-color: #F3CD46;
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -66,46 +95,48 @@ h2 {
   border: 1px solid #D4AF37;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 700;
-  padding: 14px 28px;
+  font-weight: 800;
+  padding: 16px 32px;
   border-radius: 4px;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: inline-block;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .btn-outline:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.08);
+  transform: translateY(-2px);
 }
 
-/* 1. MAIN NAVIGATION HEADER CONTAINER */
+/* 1. STRUCTURAL HEAD NAVIGATION GRID */
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 6%;
-  background: rgba(11, 11, 11, 0.95);
-  backdrop-filter: blur(8px);
+  padding: 20px 4%;
+  background: rgba(11, 11, 11, 0.92);
+  backdrop-filter: blur(12px);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-.logo-badge {
-  font-size: 20px;
-  background: #161616;
+.brand-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
   border: 1px solid #D4AF37;
-  padding: 6px;
-  border-radius: 6px;
+  object-fit: cover;
 }
 
 .logo-text {
@@ -114,22 +145,21 @@ h2 {
 }
 
 .brand-title {
-  font-weight: 800;
-  font-size: 15px;
+  font-weight: 900;
+  font-size: 16px;
   letter-spacing: 0.02em;
 }
 
 .brand-subtitle {
   color: #D4AF37;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .header-nav {
   display: flex;
-  gap: 32px;
-  align-items: center;
+  gap: 28px;
 }
 
 .nav-link {
@@ -137,10 +167,8 @@ h2 {
   text-decoration: none;
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.05em;
   transition: color 0.2s;
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -151,44 +179,54 @@ h2 {
   background-color: #D4AF37;
   color: #000000;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 13px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s;
 }
 
-/* 2. HERO SECTION SETUP */
+.book-slot-btn:hover {
+  background-color: #F3CD46;
+}
+
+/* 2. AUTOMOTIVE HERO DISPLAY PANEL */
 .hero-section {
-  min-height: 85vh;
-  padding: 160px 8% 60px 8%;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  min-height: 90vh;
+  padding: 180px 6% 80px 6%;
+  background: linear-gradient(135deg, rgba(11,11,11,0.95) 30%, rgba(11,11,11,0.7) 100%), 
+              url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
   display: flex;
   align-items: center;
 }
 
 .hero-headline {
-  font-size: 72px;
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
+  font-size: 84px;
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
 }
 
 .hero-subtext {
-  color: #A0A0A0;
-  font-size: 18px;
-  margin-bottom: 32px;
+  color: #CCCCCC;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  max-width: 500px;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
-  margin-bottom: 64px;
+  margin-bottom: 70px;
 }
 
 .hero-stats {
   display: flex;
-  gap: 48px;
+  gap: 56px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 32px;
   max-width: max-content;
@@ -200,304 +238,398 @@ h2 {
 }
 
 .stat-item strong {
-  font-size: 24px;
+  font-size: 28px;
   color: #D4AF37;
+  font-weight: 900;
 }
 
 .stat-item span {
-  font-size: 12px;
-  color: #A0A0A0;
+  font-size: 11px;
+  color: #888888;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-top: 4px;
 }
 
-/* 3. SERVICES SECTION PANELS */
+/* 3. PERFORMANCE SERVICES GRID */
 .services-section {
-  padding: 80px 6%;
+  padding: 100px 6%;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .service-card {
-  background-color: #161616;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 32px;
-  border-radius: 8px;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 40px;
+  border-radius: 6px;
+  transition: transform 0.3s, border-color 0.3s;
 }
 
-.card-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.3);
 }
+
+.card-icon-frame {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clean vector shapes to substitute emojis professionally */
+.vector-icon-wash::before { content: ""; display: block; width: 16px; height: 16px; border: 2px solid #D4AF37; border-radius: 50%; }
+.vector-icon-helmet::before { content: ""; display: block; width: 20px; height: 16px; background: #D4AF37; border-radius: 10px 10px 2px 2px; }
+.vector-icon-repair::before { content: ""; display: block; width: 14px; height: 14px; border: 2px solid #D4AF37; transform: rotate(45deg); }
 
 .service-card h3 {
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 16px;
 }
 
 .service-card p {
   color: #A0A0A0;
   font-size: 14px;
-  margin-bottom: 20px;
-  line-height: 1.5;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
 .service-card ul {
   list-style: none;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .service-card li {
-  font-size: 13px;
-  margin-bottom: 8px;
+  font-size: 14px;
+  margin-bottom: 10px;
   color: #E0E0E0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .service-card li::before {
-  content: "• ";
-  color: #D4AF37;
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: #D4AF37;
+  border-radius: 50%;
 }
 
 .card-link {
   color: #D4AF37;
   text-decoration: none;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.card-link:hover {
+  border-color: #D4AF37;
 }
 
 .addon-banner {
-  background: #161616;
-  border-left: 4px solid #D4AF37;
-  padding: 20px 32px;
-  border-radius: 4px;
+  background: #121212;
+  border: 1px solid #D4AF37;
+  padding: 24px 40px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.addon-title {
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
 .addon-price {
   color: #D4AF37;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 900;
 }
 
-/* 4. TRANSPARENT PRICING & DATA MATRICES */
+/* 4. TRANSPARENT DATA MATRICES & PRICING PACKAGES */
 .pricing-section {
-  padding: 80px 6%;
-  background-color: #0E0E0E;
+  padding: 100px 6%;
+  background-color: #080808;
 }
 
 .price-lists-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
 }
 
 .price-list-box {
-  background-color: #161616;
-  padding: 32px;
-  border-radius: 8px;
+  background-color: #121212;
+  padding: 40px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.02);
 }
 
 .price-list-box h3 {
-  font-size: 16px;
-  letter-spacing: 0.05em;
-  color: #A0A0A0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #888888;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 .menu-item {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  align-items: center;
+  padding: 14px 0;
   font-size: 14px;
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.menu-item span:first-child {
+  color: #E0E0E0;
 }
 
 .gold-price {
   color: #D4AF37;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.matrix-wrapper {
+  background-color: #121212;
+  border-radius: 8px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.03);
 }
 
 .matrix-wrapper h3 {
   font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center;
+  font-weight: 900;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .table-responsive {
   overflow-x: auto;
-  margin-bottom: 40px;
 }
 
 .matrix-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #161616;
-  border-radius: 8px;
-  overflow: hidden;
+  text-align: left;
 }
 
 .matrix-table th, .matrix-table td {
-  padding: 16px 20px;
-  text-align: left;
+  padding: 18px 24px;
   font-size: 14px;
 }
 
 .matrix-table th {
-  background-color: #202020;
-  color: #A0A0A0;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.05em;
+  background-color: #181818;
+  color: #888888;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+
+.matrix-table th small {
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #666666;
+  display: block;
+  margin-top: 4px;
 }
 
 .matrix-table tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .matrix-table td {
-  color: #E0E0E0;
+  color: #FFFFFF;
+  font-weight: 500;
 }
 
 .matrix-table tr:hover {
-  background-color: rgba(255,255,255,0.02);
+  background-color: rgba(255,255,255,0.01);
 }
 
 .premium-row {
-  background-color: rgba(212, 175, 55, 0.03);
+  background-color: rgba(212, 175, 55, 0.02);
+}
+
+.premium-row td {
+  color: #D4AF37;
+  font-weight: 700;
 }
 
 .premium-badge {
-  background: #D4AF37;
-  color: #000000;
-  font-size: 10px;
+  background: rgba(212, 175, 55, 0.15);
+  color: #D4AF37;
+  font-size: 9px;
   font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(212,175,55,0.3);
 }
 
 .center-cta-wrap {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 48px;
 }
 
-/* 5. ABOUT US STRUCTURE */
+/* 5. BRAND PROFILE & FOUNDATION STYLING */
 .about-section {
-  padding: 80px 6%;
+  padding: 100px 6%;
 }
 
 .about-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 64px;
   align-items: center;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
 }
 
 .about-image-side {
-  height: 350px;
-  background-color: #161616;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 440px;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
+              url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+  border-radius: 6px;
   position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
-.placeholder-art {
-  font-size: 72px;
-}
-
-.image-badge {
+.image-overlay-box {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background-color: #000000;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
+  bottom: 24px;
+  left: 24px;
+}
+
+.location-pin-indicator {
+  background-color: #0B0B0B;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 13px;
   font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid #D4AF37;
+  letter-spacing: 0.02em;
 }
 
 .about-text-side h2 {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  line-height: 1.15;
 }
 
 .about-text-side p {
   color: #A0A0A0;
-  line-height: 1.6;
-  margin-bottom: 32px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 15px;
 }
 
 .about-actions {
   display: flex;
   gap: 16px;
+  margin-top: 32px;
+}
+
+.core-values-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.core-values-heading h3 {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
 }
 
 .core-values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
 .value-card {
-  background-color: #161616;
-  padding: 24px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.02);
+  background-color: #121212;
+  padding: 32px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.03);
 }
 
 .value-card h4 {
-  font-size: 16px;
+  font-size: 17px;
   color: #D4AF37;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .value-card p {
-  color: #A0A0A0;
+  color: #888888;
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-/* 6. TESTIMONIALS SECTION FIXES */
+/* 6. VERIFIED REVIEWS SECTION */
 .testimonials-section {
-  padding: 80px 6%;
-  background-color: #0E0E0E;
+  padding: 100px 6%;
+  background-color: #080808;
 }
 
 .testimonials-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 32px;
 }
 
 .rating-summary-card {
-  background-color: #161616;
-  padding: 16px 24px;
-  border-radius: 8px;
+  background-color: #121212;
+  padding: 20px 32px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  border: 1px solid rgba(255,255,255,0.05);
+  gap: 20px;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .big-rating {
-  font-size: 36px;
-  font-weight: 900;
+  font-size: 42px;
+  font-weight: 950;
   color: #D4AF37;
   line-height: 1;
 }
@@ -509,111 +641,159 @@ h2 {
 
 .stars-row {
   color: #D4AF37;
-  font-size: 16px;
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .rating-labels {
   font-size: 11px;
-  color: #A0A0A0;
-  font-weight: 700;
+  color: #888888;
+  font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  margin-top: 4px;
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 .review-card {
-  background-color: #161616;
-  padding: 32px;
-  border-radius: 8px;
+  background-color: #121212;
+  padding: 40px;
+  border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-stars {
   color: #D4AF37;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 .review-text {
   font-style: italic;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #D0D0D0;
+  margin-bottom: 28px;
+}
+
+.author-meta-block {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
 }
 
 .review-author {
-  display: block;
-  font-size: 12px;
-  color: #A0A0A0;
+  font-size: 13px;
+  color: #FFFFFF;
   font-weight: 700;
 }
 
-/* 7. APPOINTMENT BOOKING FORM INTAKE */
+.author-bike {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+/* 7. SECURE ADVANCED BOOKING ENGINE */
 .booking-section {
-  padding: 80px 6%;
+  padding: 100px 6%;
 }
 
 .booking-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 48px;
-  background-color: #161616;
-  border-radius: 12px;
+  grid-template-columns: 1.1fr 1.3fr;
+  background-color: #121212;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .booking-info-side {
-  padding: 48px;
-  background-color: #1A1A1A;
+  padding: 56px;
+  background-color: #161616;
+  border-right: 1px solid rgba(255,255,255,0.04);
 }
 
 .booking-info-side h2 {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
-.info-item {
+.booking-desc-text {
+  color: #888888;
   font-size: 14px;
-  margin-bottom: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.info-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.info-stack-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-stack-item strong {
+  font-size: 11px;
+  color: #D4AF37;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.info-stack-item span {
+  font-size: 14px;
   color: #E0E0E0;
+  line-height: 1.5;
 }
 
 .booking-form-side {
-  padding: 48px;
+  padding: 56px;
 }
 
 .booking-form-side h3 {
   font-size: 18px;
-  margin-bottom: 24px;
-  letter-spacing: 0.05em;
+  font-weight: 800;
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-/* FORMS BASE STYLING */
+/* INPUT COMPONENT SPECIFICATIONS */
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .form-group label {
   font-size: 11px;
-  font-weight: 700;
-  color: #A0A0A0;
+  font-weight: 800;
+  color: #888888;
   letter-spacing: 0.05em;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .form-group input, .form-group select, .form-group textarea {
   background-color: #0B0B0B;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.08);
   color: #FFFFFF;
-  padding: 12px;
+  padding: 14px;
   font-size: 14px;
   border-radius: 4px;
+  font-family: inherit;
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -624,7 +804,7 @@ h2 {
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .form-submit-btn {
@@ -632,108 +812,195 @@ h2 {
   color: #000000;
   border: none;
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 8px;
+  transition: background-color 0.2s;
 }
 
-/* 8. GET IN TOUCH SECTION */
+.form-submit-btn:hover {
+  background-color: #F3CD46;
+}
+
+/* 8. GET IN TOUCH STUDIO DIRECT LINKS */
 .contact-section {
-  padding: 80px 6%;
-  background-color: #0E0E0E;
+  padding: 100px 6%;
+  background-color: #080808;
 }
 
 .contact-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 48px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
 }
 
 .contact-info-block h2 {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .contact-info-block p {
   color: #A0A0A0;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 40px;
 }
 
-.contact-details-stack p {
-  color: #FFFFFF;
-  margin-bottom: 12px;
+.contact-details-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-meta-row {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #E0E0E0;
+  border-left: 2px solid #D4AF37;
+  padding-left: 16px;
 }
 
 .contact-form-block {
-  background-color: #161616;
+  background-color: #121212;
   padding: 48px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.contact-form-block h3 {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
 }
 
 .message-submit-btn {
   background-color: #D4AF37;
   color: #000000;
   border: none;
-  padding: 14px 28px;
+  padding: 16px 36px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-/* 9. MASTER INTEGRATED FOOTER */
+.message-submit-btn:hover {
+  background-color: #F3CD46;
+}
+
+/* 9. MASTER PRODUCTION INTEGRATED FOOTER */
 .main-footer {
-  background-color: #0B0B0B;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  background-color: #050505;
+  border-top: 1px solid rgba(255,255,255,0.04);
 }
 
 .map-placeholder-box {
-  background-color: #161616;
-  padding: 40px;
+  background-color: #0E0E0E;
+  padding: 48px;
   text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.map-graphic-pin {
+  width: 12px;
+  height: 12px;
+  background-color: #D4AF37;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.map-text {
   font-size: 14px;
-  color: #A0A0A0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #888888;
+  font-weight: 500;
 }
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  padding: 60px 6%;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 48px;
+  padding: 80px 6%;
 }
 
-.footer-column h3 {
+.brand-col .footer-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+.footer-logo-block h3 {
   font-size: 16px;
-  margin-bottom: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.fb-footer-btn {
+  display: inline-block;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: rgba(255,255,255,0.02);
+  transition: background-color 0.2s;
+}
+
+.fb-footer-btn:hover {
+  background-color: rgba(212,175,55,0.05);
+  border-color: #D4AF37;
 }
 
 .footer-column h4 {
-  font-size: 12px;
-  color: #A0A0A0;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
+  font-size: 11px;
+  color: #666666;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
 
 .footer-column p {
-  font-size: 14px;
-  color: #A0A0A0;
+  font-size: 13px;
+  color: #888888;
   line-height: 1.6;
+  margin-bottom: 12px;
 }
 
 .footer-column a {
   display: block;
-  color: #A0A0A0;
+  color: #888888;
   text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  transition: color 0.2s;
 }
 
 .footer-column a:hover {
@@ -742,25 +1009,47 @@ h2 {
 
 .footer-bottom {
   text-align: center;
-  padding: 24px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
   font-size: 12px;
-  color: #666666;
+  color: #444444;
+  letter-spacing: 0.02em;
 }
 
-/* RESPONSIVE DESIGN FOR SMALL MOBILE SCREEN TIERS */
+/* RESPONSIVE DESIGN TIERS */
+@media (max-width: 1024px) {
+  .booking-split, .contact-split {
+    grid-template-columns: 1fr;
+  }
+  .booking-info-side {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .header-nav, .header-cta {
-    display: none; /* Collapses navigational clutter safely */
+    display: none; /* Safely collapses desktop clutter on touch screens */
   }
   .hero-headline {
-    font-size: 48px;
+    font-size: 54px;
   }
   .hero-stats {
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+  }
+  .addon-banner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
   .booking-info-side, .booking-form-side, .contact-form-block {
-    padding: 24px;
+    padding: 32px 24px;
+  }
+  .footer-columns {
+    grid-template-columns: 1fr;
   }
 }
